@@ -6,6 +6,8 @@ import com.example.demo.models.StudentInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class StudentService {
     StudentRepo studentrepo;
@@ -23,5 +25,11 @@ public class StudentService {
         return studentrepo.save(student);
 
     }
+    public Iterable<Student> getAllStudents() {
+        return studentrepo.findAll();
+    }
 
+    public Optional<Student> getStudentById(Long id) {
+        return studentrepo.findById(id);
+    }
 }
