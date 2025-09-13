@@ -26,6 +26,12 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
+    @GetMapping("/student/contact")
+    public StudentInfo getStudent(@RequestParam(name="id") Long contactId)
+    {
+        return studentService.findStudentOfContactById(contactId);
+    }
+
 
     @GetMapping("/students/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
@@ -33,6 +39,8 @@ public class StudentController {
                 .map(ResponseEntity::ok)   // return 200 with student
                 .orElse(ResponseEntity.notFound().build()); // return 404 if not found
     }
+
+
 }
 
 

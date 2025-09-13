@@ -15,4 +15,10 @@ public class Student {
     @Column(name="LastName")
     private  String lastname;
 
+// Relationships one to one
+//  this table is main table it is the owner side of the tables
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="contact_id",referencedColumnName = "id")
+    private StudentsContact contact;
+
 }
