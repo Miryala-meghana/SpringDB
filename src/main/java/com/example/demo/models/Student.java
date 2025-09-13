@@ -3,6 +3,8 @@ package com.example.demo.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name="students")
@@ -20,5 +22,8 @@ public class Student {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="contact_id",referencedColumnName = "id")
     private StudentsContact contact;
+
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    private List<StudentAddress> addresses;
 
 }

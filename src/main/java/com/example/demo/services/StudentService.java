@@ -3,11 +3,13 @@ package com.example.demo.services;
 import com.example.demo.Repository.StudentContactRepository;
 import com.example.demo.Repository.StudentRepo;
 import com.example.demo.models.Student;
+import com.example.demo.models.StudentAddress;
 import com.example.demo.models.StudentInfo;
 import com.example.demo.models.StudentsContact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,6 +33,20 @@ public class StudentService {
         contact.setEmail("thathiamma@gmail.com");
         contact.setPhone("99547344637");
         student.setContact(contact);
+
+        StudentAddress currentAddress=new StudentAddress();
+        currentAddress.setCountry("India");
+        currentAddress.setState("TS");
+        currentAddress.setStreet("myStreet");
+        currentAddress.setZipcode("5672835");
+
+        StudentAddress perAddress=new StudentAddress();
+        perAddress.setCountry("India");
+        perAddress.setState("UP");
+        perAddress.setStreet("earlybirdlayout");
+        perAddress.setZipcode("567284");
+        student.setAddresses(List.of(currentAddress,perAddress));
+
         return studentrepo.save(student);
 
     }
